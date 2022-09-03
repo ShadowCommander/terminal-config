@@ -1,5 +1,4 @@
-
-#!/bin/sh
+#!/bin/bash
 
 setup_git_input() {
 	echo "Enter your name: "
