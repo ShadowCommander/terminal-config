@@ -1,9 +1,3 @@
-# make tab cycle through commands after listing
-bind '"\t":menu-complete'
-bind "set show-all-if-ambiguous on"
-bind "set completion-ignore-case on"
-bind "set menu-complete-display-prefix on"
-
 # enable vi mode
 set -o vi
 
@@ -43,3 +37,13 @@ if [ -f ~/.git_aliases ]; then
 fi
 
 echo ".bashrc loaded"
+
+# GPG
+export GPG_TTY=$(tty)
+
+# make tab cycle through commands after listing
+bind '"\t":menu-complete'
+bind "set show-all-if-ambiguous on"
+bind "set completion-ignore-case on"
+bind "set menu-complete-display-prefix on"
+

@@ -1,0 +1,5 @@
+Host gh
+	HostName github.com
+	User git
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/id_ed25519_github
