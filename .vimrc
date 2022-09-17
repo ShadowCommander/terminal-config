@@ -47,17 +47,14 @@ filetype plugin indent on    " required
 nnoremap <Space> <Nop>
 let mapleader ="\<Space>"
 
+" ## Window movement
 noremap <C-H> <C-W>h
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-L> <C-W>l
-tnoremap <C-H> <C-W>h
-tnoremap <C-J> <C-W>j
-tnoremap <C-K> <C-W>k
-tnoremap <C-L> <C-W>l
+" ## Normal mode - Don't have to stretch for Esc when switching to normal
 inoremap jk <Esc>
-tnoremap jk <C-W>N
-
+" ## Jump to outer curly brackets
 noremap <leader>[ [{
 noremap <leader>] ]}
 
@@ -65,6 +62,16 @@ set hlsearch
 set incsearch
 set showcmd
 set rnu nu
+
+" # Terminal settings
+" ## Window movement
+tnoremap <C-H> <C-W>h
+tnoremap <C-J> <C-W>j
+tnoremap <C-K> <C-W>k
+tnoremap <C-L> <C-W>l
+" ## Command mode
+tnoremap jk <C-W>N
+
 " set mouse=a
 " set ruler
 
@@ -82,7 +89,8 @@ set rnu nu
 " call plug#end()
 
 " Mappings
-"  EasyMotion
+
+" # EasyMotion
 map <leader>f <Plug>easymotion-s
 map <leader>e <Plug>easymotion-f
 
