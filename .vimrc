@@ -44,8 +44,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-nnoremap <Space> <Nop>
+" # Leader
 let mapleader ="\<Space>"
+nnoremap <Space> <Nop>
+tnoremap <Space> <Nop>
 
 " ## Window movement
 noremap <C-H> <C-W>h
@@ -64,6 +66,7 @@ set showcmd
 set rnu nu
 
 " # Terminal settings
+autocmd TerminalOpen * setlocal nonu nornu
 " ## Window movement
 tnoremap <C-H> <C-W>h
 tnoremap <C-J> <C-W>j
@@ -71,6 +74,7 @@ tnoremap <C-K> <C-W>k
 tnoremap <C-L> <C-W>l
 " ## Command mode
 tnoremap jk <C-W>N
+
 
 " set mouse=a
 " set ruler
