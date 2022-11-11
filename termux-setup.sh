@@ -1,12 +1,9 @@
 #!/bin/bash
 
-# sources
-# source "$(dirname "$0")/setup-git.sh"
-
 # update and install
 pkg update -y
-pkg install -y vim-python git openssh python man 
-pkg install -y gnupg ctags
+pkg install -y $PACKAGES
+pkg install -y $ADDITONAL_PACKAGES
 
 # termux keyboard
 echo "extra-keys = [[ \\
