@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PACKAGES=vim-python git openssh python man 
-ADDITONAL_PACKAGES=gnupg ctags
+PACKAGES="vim-python git openssh python man"
+ADDITONAL_PACKAGES="gnupg ctags"
 
 if command -v termux-info &> /dev/null
 then
