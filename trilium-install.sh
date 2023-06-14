@@ -8,7 +8,9 @@ git clone https://github.com/zadam/trilium.git $HOME/github/trilium
 cd $HOME/github/trilium
 
 # Add if check for if cpuInfos is undefined
-git apply --verbose 0001-Add-an-undefined-check-for-cpuInfos.patch
+#git apply --verbose 0001-Add-an-undefined-check-for-cpuInfos.patch
+git fetch origin pull/3957/head:termux
+git checkout termux 
 
 mv package-lock.json package-lock.json.bak
 sed -i.bak '/electron/d' package.json

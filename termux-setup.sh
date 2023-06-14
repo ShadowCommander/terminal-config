@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# update and install
+echo "# Running Termux setup"
+echo "## pkg update and install"
 pkg update -y
+pkg upgrade -y
 pkg install -y $PACKAGES
 pkg install -y $ADDITONAL_PACKAGES
+pkg install -y termux-api
 
-# termux keyboard
+echo "## Set up Termux keyboard extra keys"
 echo "extra-keys = [[ \\
 	{key: 'ESC'},	\\
 	{key: '/', popup: '~'},	\\
