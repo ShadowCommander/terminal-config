@@ -66,7 +66,7 @@ set showcmd
 set rnu nu
 
 " # Terminal settings
-autocmd TerminalOpen * setlocal nonu nornu
+autocmd TermOpen * setlocal nonumber norelativenumber
 " ## Window movement
 tnoremap <C-H> <C-W>h
 tnoremap <C-J> <C-W>j
@@ -98,5 +98,11 @@ tnoremap jk <C-W>N
 map <leader>f <Plug>easymotion-s
 map <leader>e <Plug>easymotion-f
 
-nnoremap <leader>y :<c-u>let @/=@"<cr>gvy:let [@/,@"]=[@",@/]<cr>/\V<c-r>=substitute(escape(@/,'/\'),'\n','\\n','g')<cr><cr>
-nnoremap <leader>* 0y$/\V<c-r>"<cr>
+" # Clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+
+"nnoremap <leader>y :<c-u>let @/=@"<cr>gvy:let [@/,@"]=[@",@/]<cr>/\V<c-r>=substitute(escape(@/,'/\'),'\n','\\n','g')<cr><cr>
+"nnoremap <leader>* 0y$/\V<c-r>"<cr>
