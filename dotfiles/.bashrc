@@ -33,7 +33,11 @@ fi
 unset env
 
 if [ -f ~/.git_aliases ]; then
-    . ~/.git_aliases
+	. ~/.git_aliases
+fi
+
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
 fi
 
 echo ".bashrc loaded"
