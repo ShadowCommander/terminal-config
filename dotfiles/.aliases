@@ -1,8 +1,21 @@
 #!/bin/bash
 
+# alias
+alias ag='alias | $GREP'
+
 # neovim
-alias v=neovim
-alias vim=neovim
+alias v=nvim
+alias vim=nvim
+
+# ls
+alias l='ls --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable --group-directories-first'
+alias la='ls --format=long --all --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable --group-directories-first'
+alias ll='ls --format=long --classify --tabsize=0 --literal --color=auto --show-control-chars --human-readable --group-directories-first'
 
 # git
 alias g=git
+
+## Git temp branch checkout. Used for merging and editing other branches without having to stash current changes.
+alias gct='GCT_SAVE_DIRECTORY="$PWD"; git clone -nsb $(current_branch) -o local $(git rev-parse --show-toplevel) `mktemp -d`; cd $_: git reset -q'
+alias gcto '[ -s $GCT_SAVE_DIRECTORY ] && cd $GCT_SAVE_DIRECTORY'
+
