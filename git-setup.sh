@@ -3,6 +3,8 @@
 echo "# Running git setup"
 
 setup_git_keygen() {
+	cp ~/.ssh/id_ed25519_github ~/.ssh/id_ed25519_github.bak
+	cp ~/.ssh/id_ed25519_github.pub ~/.ssh/id_ed25519_github.pub.bak
 	ssh-keygen -f ~/.ssh/id_ed25519_github -t ed25519 -C "$(git config user.email)"
 }
 
