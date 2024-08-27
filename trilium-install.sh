@@ -9,9 +9,13 @@ cd $HOME/github/trilium
 
 # Add if check for if cpuInfos is undefined
 #git apply --verbose 0001-Add-an-undefined-check-for-cpuInfos.patch
-git fetch origin pull/3957/head:termux
-git checkout termux 
+#git fetch origin pull/3957/head:termux
+#git checkout termux 
 
+# Remove cpu check due to no 'os' package on Termux
+sed -i.bak '/cpuInfos/d' src/www
+
+# Remove electron references so that the server runs on Termux
 mv package-lock.json package-lock.json.bak
 sed -i.bak '/electron/d' package.json
 

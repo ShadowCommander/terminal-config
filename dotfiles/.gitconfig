@@ -1,0 +1,4 @@
+[commit]
+	gpgsign = true
+[alias]
+	ria = !git rebase -i `git merge-base HEAD master`

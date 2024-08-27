@@ -47,7 +47,6 @@ filetype plugin indent on    " required
 " # Leader
 let mapleader ="\<Space>"
 nnoremap <Space> <Nop>
-tnoremap <Space> <Nop>
 
 " ## Window movement
 noremap <C-H> <C-W>h
@@ -68,12 +67,13 @@ set rnu nu
 " # Terminal settings
 autocmd TermOpen * setlocal nonumber norelativenumber
 " ## Window movement
-tnoremap <C-H> <C-W>h
-tnoremap <C-J> <C-W>j
-tnoremap <C-K> <C-W>k
-tnoremap <C-L> <C-W>l
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
 " ## Command mode
-tnoremap jk <C-W>N
+tnoremap jk <C-\><C-N><C-W>N
+tnoremap <Esc> <C-\><C-n>
 
 
 " set mouse=a

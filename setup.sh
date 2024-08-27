@@ -12,9 +12,7 @@ then
 fi
 
 echo "# Copy config files to ~"
-cp $PWD/.bashrc ~/
-cp $PWD/.vimrc ~/
-cp $PWD/config ~/.ssh/
+cp $PWD/dotfiles/* ~/
 
 #echo "# Set up vim plug plugins"
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
