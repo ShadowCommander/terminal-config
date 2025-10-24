@@ -13,7 +13,7 @@ agent_start () {
 
 agent_load_env
 
-# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+## agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
 agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
 if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
@@ -21,6 +21,11 @@ if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
     ssh-add
 elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
     ssh-add
+fi
+
+# Start gpg-agent if not already running
+if ! pgrep -x -u "${USER}" gpg-agent &> /dev/null; then
+    gpg-connect-agent /bye &> /dev/null
 fi
 
 # history search
