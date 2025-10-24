@@ -1,0 +1,117 @@
+{
+    "[markdown]": {
+        "editor.unicodeHighlight.ambiguousCharacters": false,
+        "editor.unicodeHighlight.invisibleCharacters": false,
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        },
+        "editor.tabSize": 2,
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "leetcode.workspaceFolder": "c:\\Users\\Legionare\\Documents\\GitHub\\LeetCode",
+    "editor.lineNumbers": "relative",
+    "explorer.confirmDragAndDrop": false,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.wordWrap": "on",
+    "editor.wrappingColumn": 80,
+    "typescript.suggest.completeFunctionCalls": true,
+    "editor.acceptSuggestionOnEnter": "off",
+
+
+
+    // Vim
+    "vim.vimrc.enable": true,
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["leader", "f"],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+    ],
+
+
+
+    "remote.SSH.remotePlatform": {
+        "spacescissors": "linux"
+    },
+    "terminal.external.windowsExec": "C:\\Program Files\\Git\\git-bash.exe",
+    "terminal.integrated.profiles.windows": {
+
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "grammarly.files.include": [
+        "**/README.md",
+        "**/readme.md",
+        "**/*.txt",
+        "**/*.md"
+    ],
+    "liveshare.sharedTerminalHeight": 100,
+    "git.autofetch": true,
+    "[gdscript]": {
+        "editor.insertSpaces": false
+    },
+    "window.autoDetectColorScheme": true,
+    "editor.stickyScroll.enabled": true,
+    "editor.accessibilitySupport": "off",
+    "editor.renderWhitespace": "all",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "colorize.languages": [
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "postcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg",
+        "csharp"
+    ],
+    "git.enableCommitSigning": true,
+    "markdownlint.config": {
+        "default": true,
+        "blanks-around-fences": false,
+        "no-inline-html": { "allowed_elements": ["details", "summary"]},
+        "no-hard-tabs": false
+    },
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "dreammaker.autoUpdate": true,
+    "dreammaker.byondPath": [
+        "g:\\BYOND"
+    ],
+    "editor.comments.insertSpace": false,
+}
