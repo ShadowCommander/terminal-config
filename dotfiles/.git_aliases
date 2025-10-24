@@ -1,0 +1,111 @@
+alias fs=syncCurrentBranchWithUpstream
+
+function deleteRemoteTagAndPush() {
+        if [[ ! -n $1 ]]; then
+                echo 'Input tag required'
+        else
+                TAG=$1
+                git tag -d $TAG
+                git push origin :refs/tags/$TAG
+        fi
+}
+
+function setLocalAndRemoteBranches() {
+        if [[ $# -eq 0 ]]; then
+                LOCAL_BRANCH=master
+                REMOTE_BRANCH=master
+        elif [[ $# -eq 1 ]]; then
+                LOCAL_BRANCH=$1
+                REMOTE_BRANCH=$1
+        elif [[ $# -eq 2 ]]; then
+                LOCAL_BRANCH=$1
+                REMOTE_BRANCH=$2
+        else
+                echo 'More than 2 arguments not allowed (e.g. 1:<LOCAL_BRANCH> 2:<REMOTE_BRANCH>, defaults to master)'
+                return 1
+        fi
+        return 0
+}
+
+function setCurrentBranch() {
+        ref=$(git symbolic-ref HEAD 2> /dev/null)
+        if [[ ! -n $ref ]]; then
+                echo 'Unable to find HEAD ref'
+                return 1
+        fi
+        CURRENT_BRANCH="${ref#refs/heads/}"
+        return 0
+}
+
+function stashIfNeeded() {
+        UNSTAGED_CHANGES=0
+
+        if ! git diff --quiet HEAD; then
+                echo "Unstaged changes found on ${CURRENT_BRANCH} branch, stashing them..."
+                git stash
+                UNSTAGED_CHANGES=1
+        fi
+}
+
+function popIfNeeded() {
+        if [[ $UNSTAGED_CHANGES -eq 1 ]]; then
+                echo "Popping unstaged changes from stash back onto ${CURRENT_BRANCH} branch"
+                git stash pop
+        fi
+}
+
+function switchBranches() {
+        setCurrentBranch
+        NEW_BRANCH=$1
+        echo "Switching branches from ${CURRENT_BRANCH} to $NEW_BRANCH"
+        stashIfNeeded
+        git checkout $NEW_BRANCH
+        CURRENT_BRANCH=$NEW_BRANCH
+        popIfNeeded
+}
+
+function syncCurrentBranchWithRemote() {
+        if setLocalAndRemoteBranches $@ && setCurrentBranch; then
+                echo "Syncing ${CURRENT_BRANCH} branch with remote ${REMOTE_BRANCH} changes..."
+
+                stashIfNeeded
+                git checkout ${LOCAL_BRANCH}
+                # LOCAL_BRANCH has no changes, so we are going to fetch and do a fast-forward merge
+                git pull origin
+                git checkout ${CURRENT_BRANCH}
+                git rebase -r ${LOCAL_BRANCH}
+                popIfNeeded
+        fi
+}
+
+function mergeCurrentBranchWithRemoteAndPush() {
+        if setLocalAndRemoteBranches $@ && setCurrentBranch; then
+                echo "Syncing ${CURRENT_BRANCH} branch with remote ${REMOTE_BRANCH} changes before push..."
+                git checkout ${LOCAL_BRANCH}
+                # LOCAL_BRANCH should have no changes, so we are going to fetch and do a fast-forward merge
+                git pull origin
+                git checkout ${CURRENT_BRANCH}
+                git rebase -r ${LOCAL_BRANCH}
+                echo "Pushing ${CURRENT_BRANCH} branch changes to remote ${REMOTE_BRANCH}..."
+                git checkout ${LOCAL_BRANCH}
+                # Doing a fast-forward merge to bring LOCAL_BRANCH up to date before pushing
+                git merge ${CURRENT_BRANCH}
+                git push origin ${REMOTE_BRANCH}
+                git checkout ${CURRENT_BRANCH}
+        fi
+}
+
+function syncCurrentBranchWithUpstream() {
+        if setLocalAndRemoteBranches $@ && setCurrentBranch; then
+                echo "Syncing ${CURRENT_BRANCH} branch with upstream ${REMOTE_BRANCH} changes..."
+
+                stashIfNeeded
+                git checkout ${LOCAL_BRANCH}
+                git fetch upstream
+                # LOCAL_BRANCH has no changes, so we are going to fetch and do a fast-forward merge
+                git merge upstream/${REMOTE_BRANCH}
+                git checkout ${CURRENT_BRANCH}
+                git rebase -r ${LOCAL_BRANCH}
+                popIfNeeded
+        fi
+}

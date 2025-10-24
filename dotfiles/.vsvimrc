@@ -1,0 +1,27 @@
+source ~/.vimrc
+set ignorecase
+set clipboard=unnamed
+
+map <Leader>r :vsc Refactor.Rename<CR>
+map <Leader>f :vsc Edit.GoToFile<CR>
+map <Leader>e :vsc View.NextError<CR>
+map <Leader>E :vsc View.PreviousError<CR>
+map <Leader>s :vsc Edit.SurroundWith<CR>
+map <Leader>u :vsc Edit.FindAllReferences<CR>
+map <Leader>d :vsc Edit.Duplicate<CR>
+map <Leader>m :vsc Refactor.ExtractMethod<CR>
+map <Leader>t :vsc Edit.GoToType<CR>
+map <Leader>tr :vsc TestExplorer.RunAllTestsInContext<CR>
+map <Leader>td :vsc TestExplorer.DebugAllTestsInContext<CR>
+map <Leader>ta :vsc TestExplorer.RunAllTests<CR>
+map <Leader>tl :vsc TestExplorer.RepeatLastRun<CR>
+map <Leader>tt :vsc TestExplorer.ShowTestExplorer<CR>
+map <Leader>/ :vsc Edit.ToggleLineComment<CR>
+map <Leader>qk :vsc Tools.CustomizeKeyboard<CR>
+map <Leader>b :vsc Build.BuildSolution<CR>
+map <Leader><Leader> :vsc Tools.InvokeAceJumpCommand<CR>
+map <Leader>j :vsc Edit.GoToAll<CR>
+map <Leader>; <Esc><Esc>A;<Esc>
+map ] :vsc Edit.NextMethod<CR>
+map [ :vsc Edit.PreviousMethod<CR>
+map zl :so ~/.vsvimrc<CR>

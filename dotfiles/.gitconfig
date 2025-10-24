@@ -1,4 +1,13 @@
 [commit]
 	gpgsign = true
 [alias]
+	rmmerged = branch --merged > /tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d < /tmp/merged-branches
+	co = checkout
+	s = status
+	f = fetch
+	c = checkout
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+	p = pull
+	checkmerged = "!f() { git checkout -q master && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse \"$branch^{tree}\") -p $mergeBase -m _)) == \"-\"* ]] && echo \"$branch is merged into master and can be deleted\"; done }; f"
+	delmerged = "!f() { git checkout -q master && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base master $branch) && [[ $(git cherry master $(git commit-tree $(git rev-parse \"$branch^{tree}\") -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done }; f"
 	ria = !git rebase -i `git merge-base HEAD master`

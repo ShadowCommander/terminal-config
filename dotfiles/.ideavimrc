@@ -1,6 +1,6 @@
 source ~/.vimrc
 
-" Plugins
+"# Plugins
 set easymotion
 set NERDTree
 set surround
@@ -11,30 +11,29 @@ set highlightedyank
 set vim-paragraph-motion
 set textobj-indent
 
-" Plugin Settings
+"# Plugin Settings
 let g:EasyMotion_smartcase = 1
 
-" Settings
+"# Settings
 set scrolloff=5
 set incsearch
 
-" Idea settings
+"# Idea settings
 set ideajoin
 set idearefactormode=select
 set ideamarks
-set ideaput
 set ideavimsupport=dialog
 
-" Mappings
-"  EasyMotion
+"# Mappings
+"## EasyMotion
 nmap , <Plug>(easymotion-s)
 map s <Plug>(easymotion-f)
 
-"   JK motions: Line motions
+"### JK motions: Line motions
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
-"  IdeaVim
+"## IdeaVim
 map <leader>r <Action>(RenameElement)
 
 map <leader>d <Action>(Debug)
@@ -52,8 +51,17 @@ map <leader>i <Action>(GotoImplementation)
 map <leader>a <Action>(Run)
 map <leader>s <Action>(RunClass)
 map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>x <Action>(ShowHoverInfo)
+map <leader><C-x> <Action>(SwEditorHoverActions)
 
-"   Navigation
+" Reformat the current line only
+"map <leader>l <Action>(ReformatCode)
+map <leader>l <Action>(ReformatCode)
+
+
+"### Distraction free mode
+
+"### Navigation
 map ]] <Action>(MethodDown)
 map [[ <Action>(MethodUp)
 map gd <Action>(GotoDeclaration)
@@ -65,7 +73,21 @@ map <leader>] <Action>(Tree-selectNext)
 
 map gi <Action>(GotoImplementation)
 
-" Declaration jumping
+"# Declaration jumping
 nmap <C-t> <Action>(Back)
 nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
 
+""" Running and Debugging
+nmap ,r <Action>ContextRun
+nmap ,c <Action>RunClass
+nmap ,f <Action>ChooseRunConfiguration
+nmap ,t <Action>ActivateRunToolWindow
+nmap ,u <Action>Rerun
+nmap ,f <Action>RerunFailedTests
+nmap ,b <Action>ToggleLineBreakpoint
+nmap ,d <Action>ContextDebug
+nmap ,n <Action>ActivateDebugToolWindow
+
+"# Disable bell sound
+set visualbell

@@ -104,5 +104,27 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
+" Yank commands maybe?
 "nnoremap <leader>y :<c-u>let @/=@"<cr>gvy:let [@/,@"]=[@",@/]<cr>/\V<c-r>=substitute(escape(@/,'/\'),'\n','\\n','g')<cr><cr>
 "nnoremap <leader>* 0y$/\V<c-r>"<cr>
+
+" # Disable bell sounds
+set visualbell
+
+" # Find and replace visual selection
+" https://stackoverflow.com/a/6171215
+
+" Start the find and replace command across the entire file
+"vmap <leader>z <Esc>:%s/<c-r>=GetVisual()<cr>/
+
+"vnoremap <leader>r :<C-U>%s/<C-r>=GetVisual()<CR>//gc<left><left><left>
+
+"vnoremap <leader>r :<C-U>%s/<C-r>=GetVisual()<CR>//gc<left><left><left>
+
+"vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+"vnoremap <leader>n "hy:%s/<C-r>h//gc<left><left><left>
+
+"vnoremap // y/\V<C-R>=escape(@",'/\:^$.*\/~[]')<CR><CR>
+"vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+"vnoremap // y/\V<C-R>=escape(@",'/\:')<CR><CR>
+vnoremap // y/\V<C-R>"<CR>N
